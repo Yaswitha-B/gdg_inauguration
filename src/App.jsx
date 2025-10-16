@@ -1,29 +1,18 @@
-import { useRef, useEffect } from 'react';
+import { useRef } from 'react';
 import GDGIntroSlide from './components/slides/GDGIntroSlide';
+import GDGTransitionSlide from './components/slides/GDGTransitionSlide';
+import GDGAboutSlide from './components/slides/GDGAboutSlide';
 import './App.css';
 
 function App() {
   const containerRef = useRef(null);
 
-  useEffect(() => {
-    // Add smooth scrolling behavior
-    const handleScroll = (event) => {
-      // Optional: Add custom scroll behavior here if needed
-    };
-
-    const container = containerRef.current;
-    if (container) {
-      container.addEventListener('scroll', handleScroll);
-      return () => container.removeEventListener('scroll', handleScroll);
-    }
-  }, []);
-
   return (
     <div className="slides-container" ref={containerRef}>
       <GDGIntroSlide />
-      {/* Additional slides can be added here */}
+      <GDGAboutSlide />
     </div>
-  )
+  );
 }
 
-export default App
+export default App;

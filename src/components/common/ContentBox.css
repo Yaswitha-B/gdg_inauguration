@@ -1,0 +1,161 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700;800&display=swap');
+
+.content-box {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 20px;
+  padding: 2.5rem;
+  box-shadow:
+    0 10px 40px rgba(0, 0, 0, 0.15),
+    0 0 0 1px rgba(66, 133, 244, 0.1);
+  backdrop-filter: blur(10px);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.content-box::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(
+    90deg,
+    #4285F4 0%,
+    #EA4335 25%,
+    #FBBC04 50%,
+    #34A853 75%,
+    #4285F4 100%
+  );
+  background-size: 200% 100%;
+  animation: gradientShift 8s linear infinite;
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 200% 50%;
+  }
+}
+
+.content-box-inner {
+  position: relative;
+  z-index: 1;
+}
+
+/* Variant: Highlight */
+.content-box-highlight {
+  background: linear-gradient(
+    135deg,
+    rgba(66, 133, 244, 0.1) 0%,
+    rgba(255, 255, 255, 0.95) 20%,
+    rgba(255, 255, 255, 0.95) 100%
+  );
+}
+
+/* Variant: Minimal */
+.content-box-minimal {
+  background: rgba(255, 255, 255, 0.85);
+  box-shadow:
+    0 4px 20px rgba(0, 0, 0, 0.08),
+    0 0 0 1px rgba(66, 133, 244, 0.05);
+}
+
+.content-box:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    0 15px 50px rgba(0, 0, 0, 0.2),
+    0 0 0 1px rgba(66, 133, 244, 0.2);
+}
+
+/* Typography inside content box */
+.content-box h2,
+.content-box h3,
+.content-box h4 {
+  font-family: 'Fira Code', 'Courier New', monospace;
+  color: #1a1a2e;
+  margin-top: 0;
+}
+
+.content-box h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: #4285F4;
+}
+
+.content-box h3 {
+  font-size: 1.5rem;
+  margin-bottom: 0.75rem;
+  color: #34A853;
+}
+
+.content-box p {
+  font-family: 'Fira Code', 'Courier New', monospace;
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #2c3e50;
+  margin-bottom: 1rem;
+}
+
+.content-box ul,
+.content-box ol {
+  font-family: 'Fira Code', 'Courier New', monospace;
+  font-size: 1rem;
+  line-height: 1.8;
+  color: #2c3e50;
+  padding-left: 1.5rem;
+}
+
+.content-box li {
+  margin-bottom: 0.5rem;
+}
+
+.content-box code {
+  background: rgba(66, 133, 244, 0.1);
+  padding: 0.2rem 0.4rem;
+  border-radius: 4px;
+  font-size: 0.9em;
+  color: #4285F4;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .content-box {
+    padding: 1.5rem;
+    border-radius: 16px;
+  }
+
+  .content-box h2 {
+    font-size: 1.5rem;
+  }
+
+  .content-box h3 {
+    font-size: 1.2rem;
+  }
+
+  .content-box p {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .content-box {
+    padding: 1.25rem;
+    border-radius: 12px;
+  }
+
+  .content-box h2 {
+    font-size: 1.25rem;
+  }
+
+  .content-box h3 {
+    font-size: 1.1rem;
+  }
+
+  .content-box p {
+    font-size: 0.95rem;
+  }
+}

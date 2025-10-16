@@ -1,0 +1,102 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700;800&display=swap');
+
+.about-header {
+  position: absolute;
+  /* Position so that logo CENTER is at 120px, 120px */
+  top: 40px;
+  left: 40px;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  z-index: 10;
+}
+
+/* Initially hide only the title */
+.about-header-title {
+  opacity: 0;
+  transition: opacity 0.6s ease 0.5s;
+}
+
+.about-header.show .about-header-title {
+  opacity: 1;
+}
+
+/* Logo background and circle - hidden initially, fades in */
+.about-header-logo {
+  width: 160px;
+  height: 160px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0);
+  backdrop-filter: blur(0px);
+  border-radius: 50%;
+  border: 2px solid rgba(66, 133, 244, 0);
+  padding: 20px;
+  box-shadow: none;
+  transition: all 0.6s ease 0.2s;
+}
+
+.about-header.show .about-header-logo {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(66, 133, 244, 0.3);
+  box-shadow: 0 8px 32px rgba(66, 133, 244, 0.2);
+}
+
+/* Logo image - starts hidden, becomes visible at handoff */
+.about-logo-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 0 15px rgba(66, 133, 244, 0.4));
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  /* IMPORTANT: Animation is PAUSED until .show is active */
+  animation: slowRotate 8s linear infinite;
+  animation-play-state: paused;
+}
+
+.about-header.show .about-logo-image {
+  opacity: 1;
+  /* START animation when visible - syncs with transition logo */
+  animation-play-state: running;
+}
+
+@keyframes slowRotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+h1.about-header-title {
+  font-family: 'Fira Code', 'Courier New', monospace;
+  font-size: 3rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0;
+  text-shadow: 0 2px 20px rgba(66, 133, 244, 0.4);
+  min-height: 1.2em;
+  white-space: nowrap;
+}
+
+@media (max-width: 768px) {
+  .about-header {
+    top: 30px;
+    left: 30px;
+    gap: 1rem;
+  }
+
+  .about-header-logo {
+    width: 100px;
+    height: 100px;
+    padding: 12px;
+  }
+
+  .about-header-title {
+    font-size: 1.8rem;
+  }
+}
