@@ -388,6 +388,8 @@
   opacity: 0;
   animation: typeIn 0.3s ease-out forwards;
   white-space: pre;
+  -webkit-text-stroke: 1px rgba(0, 0, 0, 0.6);
+  paint-order: stroke fill;
 }
 
 @keyframes typeIn {
@@ -529,8 +531,8 @@
   left: 20px;
   font-size: 60px;
   font-family: Georgia, serif;
-  color: var(--google-blue);
-  opacity: 0.2;
+  color: #000000;
+  opacity: 0.5;
   line-height: 1;
 }
 
