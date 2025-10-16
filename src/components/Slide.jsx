@@ -6,7 +6,6 @@ const Slide = ({ id, children, backgroundColor = '#ffffff' }) => {
   const slideRef = useRef(null);
 
   useEffect(() => {
-    // This could be used for slide-specific initialization
   }, []);
 
   return (

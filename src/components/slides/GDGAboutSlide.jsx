@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import Slide from '../Slide';
-import gdgLogo from '../../assets/logos/gdg_logo.svg';
 import './GDGAboutSlide.css';
 
 /**
@@ -27,8 +26,15 @@ const GDGAboutSlide = () => {
     },
     {
       id: 3,
-      title: 'Get Involved',
-      content: 'Join us in our journey of learning and innovation. Participate in our technical events, contribute to open-source projects, and connect with like-minded developers. Together, we build the future of technology, one line of code at a time.',
+      title: 'Why Join Us?',
+      content: 'Connect with fellow developers, gain hands-on experience with cutting-edge technologies, and build projects that matter. Access exclusive workshops, networking opportunities, and mentorship from industry professionals. Be part of a global community driving innovation.',
+      color: '#EA4335', // Google Red
+      bgColor: 'rgba(234, 67, 53, 0.08)'
+    },
+    {
+      id: 4,
+      title: 'GDG Global Reach',
+      content: '1,000+ campus chapters across 100+ countries worldwide, connecting over 500,000 student developers. Join a thriving global community passionate about learning, sharing, and building with Google technologies.',
       color: '#FBBC04', // Google Yellow
       bgColor: 'rgba(251, 188, 4, 0.08)'
     }
@@ -50,15 +56,6 @@ const GDGAboutSlide = () => {
   return (
     <Slide id="gdg-about" backgroundColor="#0a0a0a">
       <div className="gdg-about-root">
-        {/* Large Logo Header with "GDG on Campus" */}
-        <div className="about-header-large">
-          <img src={gdgLogo} alt="GDG Logo" className="header-logo-large" />
-          <div className="header-text-container">
-            <h1 className="header-title-large">GDG on Campus</h1>
-            <p className="header-subtitle">Gayatri Vidya Parishad College of Engineering for Women</p>
-          </div>
-        </div>
-
         {/* Bigger Content Boxes */}
         <div className="about-content-large">
           <div className="content-boxes-container-large">

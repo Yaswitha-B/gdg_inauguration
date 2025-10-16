@@ -4,27 +4,27 @@
   display: flex;
   flex-direction: column;
   position: relative;
-  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
+  background: #0a0a0a;
   padding: 2rem;
 }
 
 /* Large Logo Header */
 .about-header-large {
   position: absolute;
-  top: 2.5rem;
-  left: 3rem;
+  top: 1.5rem;
+  left: 2rem;
   display: flex;
   align-items: center;
-  gap: 2rem;
+  gap: 1.5rem;
   z-index: 10;
   animation: slideInHeader 0.8s cubic-bezier(0.65, 0, 0.35, 1) 0.3s both;
 }
 
 .header-logo-large {
-  width: 100px;
-  height: 100px;
+  width: 70px;
+  height: 70px;
   object-fit: contain;
-  filter: drop-shadow(0 0 25px rgba(66, 133, 244, 0.6));
+  filter: drop-shadow(0 0 20px rgba(66, 133, 244, 0.6));
   animation: logoGentleGlow 4s ease-in-out infinite;
 }
 
@@ -35,7 +35,7 @@
 }
 
 .header-title-large {
-  font-size: 3rem;
+  font-size: 2rem;
   font-weight: 700;
   margin: 0;
   background: linear-gradient(135deg, #4285F4, #34A853, #FBBC04, #EA4335);
@@ -46,7 +46,7 @@
 }
 
 .header-subtitle {
-  font-size: 1.1rem;
+  font-size: 0.9rem;
   color: rgba(255, 255, 255, 0.7);
   margin: 0;
   font-weight: 400;
@@ -79,14 +79,14 @@
   align-items: center;
   justify-content: center;
   position: relative;
-  margin-top: 8rem;
+  margin-top: 0;
 }
 
 /* Bigger Content Boxes Container */
 .content-boxes-container-large {
   position: relative;
   width: 1000px;
-  height: 400px;
+  height: 500px;
   display: flex;
   align-items: center;
   justify-content: center;
