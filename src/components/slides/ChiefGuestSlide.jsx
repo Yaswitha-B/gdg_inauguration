@@ -2,6 +2,7 @@ import { useEffect, useRef } from 'react';
 import { animate } from 'animejs';
 import Slide from '../Slide';
 import './ChiefGuestSlide.css';
+import chiefGuestImage from '../../assets/logos/Chief2.jpg';
 
 /**
  * Chief Guest Slide - Split Layout
@@ -142,11 +143,12 @@ const ChiefGuestSlide = () => {
             {/* LEFT SIDE - Big Square Image */}
             <div className="chief-left" ref={leftRef}>
               <div className="chief-image-wrapper">
-                <div className="chief-image-placeholder">
-                  {/* Placeholder for chief guest image */}
-                  <div className="placeholder-text">Chief Guest Photo</div>
-                  <div className="image-overlay"></div>
-                </div>
+                <img
+                  src={chiefGuestImage}
+                  alt="Chief Guest"
+                  className="chief-image-placeholder"
+                />
+                <div className="image-overlay"></div>
                 {/* Decorative frame corners */}
                 <div className="frame-corner corner-tl" style={{ borderColor: googleColors.blue }}></div>
                 <div className="frame-corner corner-tr" style={{ borderColor: googleColors.red }}></div>
@@ -173,7 +175,7 @@ const ChiefGuestSlide = () => {
                         [googleColors.blue, googleColors.red, googleColors.yellow, googleColors.green][i % 4]
                     }}
                   >
-                    {char}
+                    {char === ' ' ? '\u00A0' : char}
                   </span>
                 ))}
               </h1>
