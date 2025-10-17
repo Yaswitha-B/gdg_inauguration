@@ -24,7 +24,6 @@ function App() {
       <GDGAboutSlide />
       <TeamSlide />
       <ChiefGuestSlide />
-      <NewEventsSlide />
     </div>
   );
 }
