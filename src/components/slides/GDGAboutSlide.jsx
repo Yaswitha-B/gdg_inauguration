@@ -28,7 +28,7 @@ const GDGAboutSlide = () => {
       description: 'Google Developer Groups on Campus is a community of students passionate about Google technologies and development.',
       detail: 'We organize workshops, hackathons, and tech talks to empower students with cutting-edge skills and industry connections.',
       accentColor: 'var(--google-blue)',
-      bgGradient: 'linear-gradient(135deg, #E8F0FE 0%, #D2E3FC 100%)',
+      bgColor: '#F5F7FF',
       iconBg: 'var(--google-blue)'
     },
     {
@@ -38,17 +38,17 @@ const GDGAboutSlide = () => {
       description: 'To foster a vibrant community of developers, innovators, and learners through hands-on projects.',
       detail: 'We aim to bridge the gap between academic learning and real-world development through collaborative coding sessions and mentorship programs.',
       accentColor: 'var(--google-green)',
-      bgGradient: 'linear-gradient(135deg, #E6F4EA 0%, #CEEAD6 100%)',
+      bgColor: '#F5FFF7',
       iconBg: 'var(--google-green)'
     },
     {
       id: 3,
-      title: 'Why Join Us?',
+      title: 'What We Do',
       icon: '💡',
-      description: 'Connect with fellow developers, gain hands-on experience with cutting-edge technologies.',
-      detail: 'Access exclusive workshops, networking opportunities, and mentorship from industry professionals. Be part of a global community driving innovation.',
+      description: 'Host workshops, hackathons, study jams, and tech talks on Google technologies and modern development practices.',
+      detail: 'From beginner-friendly sessions to advanced technical deep-dives, we create opportunities for students to learn, build, and showcase their skills through hands-on projects.',
       accentColor: 'var(--google-red)',
-      bgGradient: 'linear-gradient(135deg, #FCE8E6 0%, #FAD2CF 100%)',
+      bgColor: '#FFF5F5',
       iconBg: 'var(--google-red)'
     },
     {
@@ -58,7 +58,7 @@ const GDGAboutSlide = () => {
       description: '1,000+ campus chapters across 100+ countries worldwide.',
       detail: 'Connecting over 500,000 student developers. Join a thriving global community passionate about learning, sharing, and building with Google technologies.',
       accentColor: 'var(--google-yellow)',
-      bgGradient: 'linear-gradient(135deg, #FEF7E0 0%, #FEEFC3 100%)',
+      bgColor: '#FFFDF5',
       iconBg: 'var(--google-yellow)'
     }
   ];
@@ -141,7 +141,8 @@ const GDGAboutSlide = () => {
               <span style={{ color: 'var(--google-blue)' }}>G</span>
               <span style={{ color: 'var(--google-red)' }}>D</span>
               <span style={{ color: 'var(--google-yellow)' }}>G</span>
-              <span style={{ color: 'var(--google-green)' }}>C</span>
+              <span style={{ color: 'var(--google-green)' }}>o</span>
+              <span style={{ color: 'var(--google-red)' }}>C</span>
             </span>
           </h2>
           <p className="about-subtitle">Empowering developers to build amazing things</p>
@@ -179,7 +180,8 @@ const GDGAboutSlide = () => {
                   key={card.id}
                   className={`carousel-card-about ${index === activeIndex ? 'active' : ''}`}
                   style={{
-                    background: card.bgGradient
+                    background: card.bgColor,
+                    color: card.accentColor
                   }}
                 >
                   {/* Card Content */}

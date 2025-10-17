@@ -1,167 +1,186 @@
 import { useEffect, useRef } from 'react';
+import { animate } from 'animejs';
 import Slide from '../Slide';
 import './NewEventsSlide.css';
 
 /**
- * Events Slide - Clean Grid Layout
- * Features:
- * - 6 events in an organized 2x3 grid
- * - Hover animations
- * - Google Material Design with optimal space usage
- * - Vibrant background from Slide 1
+ * Events Slide - Fresh Redesign
+ * Large white container with events inside
+ * Inspired by slides 1, 2, 3 design language
  */
 const NewEventsSlide = () => {
-  const decorationsRef = useRef(null);
+  const containerRef = useRef(null);
+  const headerRef = useRef(null);
+  const eventsRef = useRef(null);
 
-  const googleColors = [
-    'var(--google-blue)',
-    'var(--google-red)',
-    'var(--google-yellow)',
-    'var(--google-green)',
-    'var(--google-blue)',
-    'var(--google-red)'
-  ];
+  const googleColors = {
+    blue: '#4285F4',
+    red: '#EA4335',
+    yellow: '#FBBC04',
+    green: '#34A853'
+  };
 
-  const events = [
+  const upcomingEvents = [
     {
       id: 1,
-      title: 'Web Development Workshop',
-      date: 'January 2025',
-      icon: '💻',
-      description: 'Modern web dev with React & Node.js',
-      attendees: '150+',
-      duration: '4 hours',
-      color: googleColors[0],
-      bgGradient: 'linear-gradient(135deg, rgba(232, 240, 254, 0.6) 0%, rgba(255, 255, 255, 0.9) 100%)'
+      name: 'GDGoC Kickoff',
+      date: 'Dec 20, 2024',
+      time: '10:00 AM',
+      venue: 'Main Auditorium',
+      color: googleColors.blue
     },
     {
       id: 2,
-      title: 'AI/ML Hackathon',
-      date: 'February 2025',
-      icon: '🤖',
-      description: '24hr hackathon with AI & ML focus',
-      attendees: '200+',
-      duration: '24 hours',
-      color: googleColors[1],
-      bgGradient: 'linear-gradient(135deg, rgba(252, 232, 230, 0.6) 0%, rgba(255, 255, 255, 0.9) 100%)'
+      name: 'Tech Talk: AI & ML',
+      date: 'Dec 27, 2024',
+      time: '5:00 PM',
+      venue: 'Smart Classroom',
+      color: googleColors.red
     },
     {
       id: 3,
-      title: 'Cloud Computing Bootcamp',
-      date: 'March 2025',
-      icon: '☁️',
-      description: 'GCP mastery with certification prep',
-      attendees: '120+',
-      duration: '2 days',
-      color: googleColors[2],
-      bgGradient: 'linear-gradient(135deg, rgba(254, 247, 224, 0.6) 0%, rgba(255, 255, 255, 0.9) 100%)'
+      name: 'Workshop: Web Dev',
+      date: 'Jan 3, 2025',
+      time: '2:00 PM',
+      venue: 'Lab 101',
+      color: googleColors.yellow
     },
     {
       id: 4,
-      title: 'Mobile App Development',
-      date: 'April 2025',
-      icon: '📱',
-      description: 'Cross-platform apps with Flutter',
-      attendees: '180+',
-      duration: '6 hours',
-      color: googleColors[3],
-      bgGradient: 'linear-gradient(135deg, rgba(230, 244, 234, 0.6) 0%, rgba(255, 255, 255, 0.9) 100%)'
+      name: 'Hackathon 2025',
+      date: 'Jan 15-16, 2025',
+      time: '24 Hours',
+      venue: 'Campus Wide',
+      color: googleColors.green
     },
     {
       id: 5,
-      title: 'Tech Talk Series',
-      date: 'Monthly',
-      icon: '🎤',
-      description: 'Industry experts & career guidance',
-      attendees: '300+',
-      duration: '2 hours',
-      color: googleColors[4],
-      bgGradient: 'linear-gradient(135deg, rgba(232, 240, 254, 0.6) 0%, rgba(255, 255, 255, 0.9) 100%)'
+      name: 'Code & Coffee',
+      date: 'Every Friday',
+      time: '4:00 PM',
+      venue: 'Cafeteria',
+      color: googleColors.blue
     },
     {
       id: 6,
-      title: 'Open Source Contribution',
-      date: 'Ongoing',
-      icon: '🌟',
-      description: 'Build your developer portfolio',
-      attendees: '100+',
-      duration: 'Continuous',
-      color: googleColors[5],
-      bgGradient: 'linear-gradient(135deg, rgba(252, 232, 230, 0.6) 0%, rgba(255, 255, 255, 0.9) 100%)'
+      name: 'Study Jam',
+      date: 'Weekly',
+      time: '6:00 PM',
+      venue: 'Library',
+      color: googleColors.red
     }
   ];
 
   useEffect(() => {
-    // Animate decorations on mount
-    if (decorationsRef.current) {
-      const dots = decorationsRef.current.querySelectorAll('.floating-dot-events');
-      dots.forEach((dot, i) => {
-        dot.style.animationDelay = `${i * 1}s`;
+    // Container entrance
+    if (containerRef.current) {
+      animate(containerRef.current, {
+        scale: [0.95, 1],
+        opacity: [0, 1]
+      }, {
+        duration: 800,
+        ease: 'out(3)'
+      });
+    }
+
+    // Header animation
+    if (headerRef.current) {
+      const title = headerRef.current.querySelector('.events-heading');
+      if (title) {
+        animate(title, {
+          translateY: [-30, 0],
+          opacity: [0, 1]
+        }, {
+          duration: 600,
+          delay: 300
+        });
+      }
+
+      const divider = headerRef.current.querySelector('.events-divider');
+      if (divider) {
+        const bars = divider.querySelectorAll('.divider-bar');
+        bars.forEach((bar, i) => {
+          animate(bar, {
+            scaleX: [0, 1]
+          }, {
+            duration: 500,
+            delay: 600 + i * 100,
+            ease: 'out(2)'
+          });
+        });
+      }
+    }
+
+    // Events cascade
+    if (eventsRef.current) {
+      const eventItems = eventsRef.current.querySelectorAll('.event-item');
+      eventItems.forEach((item, i) => {
+        animate(item, {
+          translateX: [40, 0],
+          opacity: [0, 1]
+        }, {
+          duration: 600,
+          delay: 900 + i * 100,
+          ease: 'out(2)'
+        });
       });
     }
   }, []);
 
   return (
     <Slide id="events" backgroundColor="#000000">
-      <div className="events-root">
-        {/* Vibrant decorations like Slide 1 */}
-        <div className="decorations-events" ref={decorationsRef}>
-          <div className="floating-dot-events dot-blue-events"></div>
-          <div className="floating-dot-events dot-green-events"></div>
+      <div className="events-redesign-root">
+        {/* Background Glow */}
+        <div className="events-glow-bg">
+          <div className="glow-circle glow-blue"></div>
+          <div className="glow-circle glow-red"></div>
+          <div className="glow-circle glow-yellow"></div>
         </div>
 
-        {/* Header */}
-        <div className="events-header">
-          <h2 className="events-title">
-            Our{' '}
-            <span className="events-title-colored">
-              <span style={{ color: googleColors[0] }}>E</span>
-              <span style={{ color: googleColors[1] }}>v</span>
-              <span style={{ color: googleColors[2] }}>e</span>
-              <span style={{ color: googleColors[3] }}>n</span>
-              <span style={{ color: googleColors[4] }}>t</span>
-              <span style={{ color: googleColors[5] }}>s</span>
-            </span>
-          </h2>
-          <p className="events-subtitle">Empowering developers through hands-on learning</p>
-        </div>
+        {/* Main White Container */}
+        <div className="events-white-container" ref={containerRef}>
+          {/* Header Section */}
+          <div className="events-container-header" ref={headerRef}>
+            <h2 className="events-heading">Upcoming Events</h2>
+            <div className="events-divider">
+              <span className="divider-bar" style={{ background: googleColors.blue }}></span>
+              <span className="divider-bar" style={{ background: googleColors.red }}></span>
+              <span className="divider-bar" style={{ background: googleColors.yellow }}></span>
+              <span className="divider-bar" style={{ background: googleColors.green }}></span>
+            </div>
+            <p className="events-tagline">Join us for amazing learning experiences</p>
+          </div>
 
-        {/* Events Grid - 2x3 layout */}
-        <div className="events-grid">
-          {events.map((event) => (
-            <div
-              key={event.id}
-              className="event-card"
-              style={{
-                '--card-color': event.color,
-                background: event.bgGradient
-              }}
-            >
-              <div className="event-card-content">
-                <div
-                  className="event-icon-circle"
-                  style={{ backgroundColor: event.color }}
-                >
-                  <span className="event-icon">{event.icon}</span>
+          {/* Events List */}
+          <div className="events-list-container" ref={eventsRef}>
+            {upcomingEvents.map((event) => (
+              <div key={event.id} className="event-item" style={{ '--accent-color': event.color }}>
+                <div className="event-color-dot" style={{ background: event.color }}></div>
+                <div className="event-details">
+                  <h3 className="event-name">{event.name}</h3>
+                  <div className="event-meta">
+                    <span className="event-meta-item">
+                      <span className="meta-icon">📅</span>
+                      {event.date}
+                    </span>
+                    <span className="event-meta-separator">•</span>
+                    <span className="event-meta-item">
+                      <span className="meta-icon">🕐</span>
+                      {event.time}
+                    </span>
+                    <span className="event-meta-separator">•</span>
+                    <span className="event-meta-item">
+                      <span className="meta-icon">📍</span>
+                      {event.venue}
+                    </span>
+                  </div>
                 </div>
-                <h3 className="event-title">{event.title}</h3>
-                <p className="event-date" style={{ color: event.color }}>
-                  {event.date}
-                </p>
-                <p className="event-description">{event.description}</p>
-                <div className="event-stats">
-                  <div className="stat">
-                    <span className="stat-icon">👥</span>
-                    <span className="stat-value">{event.attendees}</span>
-                  </div>
-                  <div className="stat">
-                    <span className="stat-icon">⏱️</span>
-                    <span className="stat-value">{event.duration}</span>
-                  </div>
+                <div className="event-action">
+                  <span className="action-text" style={{ color: event.color }}>Learn More →</span>
                 </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
     </Slide>

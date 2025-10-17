@@ -1,40 +1,128 @@
 import { useEffect, useRef } from 'react';
+import { animate } from 'animejs';
 import Slide from '../Slide';
 import './ChiefGuestSlide.css';
 
 /**
- * Chief Guest Slide - Welcome Message
- * Features:
- * - Large welcome message
- * - Chief Guest details with placeholder
- * - Google Material Design styling
- * - Elegant animations
+ * Chief Guest Slide - Split Layout
+ * Left: Big square image (50%)
+ * Right: Welcome message and details (50%)
+ * Google Material Design with animations
  */
 const ChiefGuestSlide = () => {
-  const contentRef = useRef(null);
+  const leftRef = useRef(null);
+  const rightRef = useRef(null);
 
   const googleColors = {
-    blue: 'var(--google-blue)',
-    red: 'var(--google-red)',
-    yellow: 'var(--google-yellow)',
-    green: 'var(--google-green)'
+    blue: '#4285F4',
+    red: '#EA4335',
+    yellow: '#FBBC04',
+    green: '#34A853'
   };
 
-  // Placeholder chief guest data
+  // Chief guest data
   const chiefGuest = {
     name: 'Dr. Chief Guest Name',
     title: 'Chief Technology Officer',
     organization: 'Google India',
-    credentials: 'Ph.D. in Computer Science, IIT Delhi',
-    initials: 'CG'
+    bio: 'A visionary leader in technology and innovation with over 20 years of experience in software engineering and digital transformation.'
   };
 
   useEffect(() => {
-    if (contentRef.current) {
-      // Trigger animations
-      const elements = contentRef.current.querySelectorAll('.animate-in');
-      elements.forEach((el, i) => {
-        el.style.animationDelay = `${i * 0.2}s`;
+    // Card entrance animation
+    if (rightRef.current) {
+      animate(rightRef.current, {
+        scale: [0.95, 1],
+        opacity: [0, 1]
+      }, {
+        duration: 800,
+        ease: 'out(3)'
+      });
+    }
+
+    // Left image animation with rotation
+    if (leftRef.current) {
+      animate(leftRef.current, {
+        translateX: [-50, 0],
+        opacity: [0, 1],
+        scale: [0.9, 1],
+        rotate: [-5, 0]
+      }, {
+        duration: 1000,
+        delay: 300,
+        ease: 'out(3)'
+      });
+
+      // Animate corner decorations
+      const corners = leftRef.current.querySelectorAll('.frame-corner');
+      if (corners) {
+        corners.forEach((corner, i) => {
+          animate(corner, {
+            scale: [0, 1],
+            opacity: [0, 0.7]
+          }, {
+            duration: 500,
+            delay: 800 + i * 150,
+            ease: 'out(3)'
+          });
+        });
+      }
+    }
+
+    // Welcome text animation
+    const welcome = document.querySelector('.chief-welcome');
+    if (welcome) {
+      animate(welcome, {
+        translateY: [-30, 0],
+        opacity: [0, 1]
+      }, {
+        duration: 600,
+        delay: 400
+      });
+    }
+
+    // Name letters cascade animation
+    const letters = document.querySelectorAll('.name-letter');
+    if (letters) {
+      letters.forEach((letter, i) => {
+        animate(letter, {
+          translateY: [-20, 0],
+          opacity: [0, 1],
+          scale: [0.5, 1],
+          rotate: [15, 0]
+        }, {
+          duration: 500,
+          delay: 600 + i * 40,
+          ease: 'out(3)'
+        });
+      });
+    }
+
+    // Divider bars slide in
+    const dividerBars = document.querySelectorAll('.chief-divider span');
+    if (dividerBars) {
+      dividerBars.forEach((bar, i) => {
+        animate(bar, {
+          scaleX: [0, 1]
+        }, {
+          duration: 600,
+          delay: 1000 + i * 100,
+          ease: 'out(3)'
+        });
+      });
+    }
+
+    // Details fade in from bottom
+    const details = document.querySelectorAll('.detail-item');
+    if (details) {
+      details.forEach((detail, i) => {
+        animate(detail, {
+          translateY: [20, 0],
+          opacity: [0, 1]
+        }, {
+          duration: 600,
+          delay: 1200 + i * 150
+        });
       });
     }
   }, []);
@@ -42,102 +130,85 @@ const ChiefGuestSlide = () => {
   return (
     <Slide id="chief-guest" backgroundColor="#000000">
       <div className="chief-guest-root">
-        {/* Vibrant decorations */}
-        <div className="decorations-chief">
-          <div className="floating-dot-chief dot-blue-chief"></div>
-          <div className="floating-dot-chief dot-green-chief"></div>
+        {/* Background decorations */}
+        <div className="chief-decorations">
+          <div className="chief-dot chief-dot-blue"></div>
+          <div className="chief-dot chief-dot-red"></div>
         </div>
 
-        {/* Welcome Banner */}
-        <div className="welcome-banner animate-in">
-          <div className="banner-decoration">
-            <div className="deco-line line-blue"></div>
-            <div className="deco-line line-red"></div>
-            <div className="deco-line line-yellow"></div>
-            <div className="deco-line line-green"></div>
-          </div>
-          <h1 className="welcome-title">
-            {'Welcome'.split('').map((char, i) => (
-              <span
-                key={i}
-                className="welcome-letter"
-                style={{
-                  color: [
-                    googleColors.blue,
-                    googleColors.red,
-                    googleColors.yellow,
-                    googleColors.green,
-                    googleColors.blue,
-                    googleColors.red,
-                    googleColors.yellow
-                  ][i],
-                  animationDelay: `${i * 0.1}s`
-                }}
-              >
-                {char}
-              </span>
-            ))}
-          </h1>
-          <p className="welcome-subtitle">Chief Guest</p>
-        </div>
-
-        {/* Chief Guest Card */}
-        <div className="chief-guest-content" ref={contentRef}>
-          <div className="guest-card animate-in">
-            {/* Placeholder Avatar */}
-            <div className="guest-avatar-container">
-              <div className="guest-avatar" style={{ backgroundColor: googleColors.blue }}>
-                <span className="guest-initials">{chiefGuest.initials}</span>
-                <div className="avatar-ring-outer"></div>
-                <div className="avatar-ring-inner"></div>
-              </div>
-              <div className="avatar-badge">
-                <span>🎤</span>
+        {/* White Card Container with Image and Content */}
+        <div className="chief-content-card" ref={rightRef}>
+          <div className="chief-card-inner">
+            {/* LEFT SIDE - Big Square Image */}
+            <div className="chief-left" ref={leftRef}>
+              <div className="chief-image-wrapper">
+                <div className="chief-image-placeholder">
+                  {/* Placeholder for chief guest image */}
+                  <div className="placeholder-text">Chief Guest Photo</div>
+                  <div className="image-overlay"></div>
+                </div>
+                {/* Decorative frame corners */}
+                <div className="frame-corner corner-tl" style={{ borderColor: googleColors.blue }}></div>
+                <div className="frame-corner corner-tr" style={{ borderColor: googleColors.red }}></div>
+                <div className="frame-corner corner-bl" style={{ borderColor: googleColors.yellow }}></div>
+                <div className="frame-corner corner-br" style={{ borderColor: googleColors.green }}></div>
               </div>
             </div>
 
-            {/* Guest Info */}
-            <div className="guest-info">
-              <h2 className="guest-name animate-in">{chiefGuest.name}</h2>
-              <p className="guest-title animate-in" style={{ color: googleColors.blue }}>
-                {chiefGuest.title}
-              </p>
-              <p className="guest-organization animate-in">{chiefGuest.organization}</p>
-
-              <div className="guest-divider animate-in">
-                <div className="divider-segment" style={{ backgroundColor: googleColors.blue }}></div>
-                <div className="divider-segment" style={{ backgroundColor: googleColors.red }}></div>
-                <div className="divider-segment" style={{ backgroundColor: googleColors.yellow }}></div>
-                <div className="divider-segment" style={{ backgroundColor: googleColors.green }}></div>
+            {/* RIGHT SIDE - Content */}
+            <div className="chief-right">
+              {/* Welcome Header */}
+              <div className="chief-welcome">
+                <h2 className="welcome-text">Welcome</h2>
               </div>
 
-              <p className="guest-credentials animate-in">{chiefGuest.credentials}</p>
+              {/* Chief Guest Name with Google Colors */}
+              <h1 className="chief-name">
+                {chiefGuest.name.split('').map((char, i) => (
+                  <span
+                    key={i}
+                    className="name-letter"
+                    style={{
+                      color: char === ' ' ? 'transparent' :
+                        [googleColors.blue, googleColors.red, googleColors.yellow, googleColors.green][i % 4]
+                    }}
+                  >
+                    {char}
+                  </span>
+                ))}
+              </h1>
+
+              {/* Title and Organization */}
+              <div className="detail-item chief-title" style={{ color: googleColors.blue }}>
+                {chiefGuest.title}
+              </div>
+              <div className="detail-item chief-org">
+                {chiefGuest.organization}
+              </div>
+
+              {/* Google Color Divider */}
+              <div className="chief-divider">
+                <span style={{ background: googleColors.blue }}></span>
+                <span style={{ background: googleColors.red }}></span>
+                <span style={{ background: googleColors.yellow }}></span>
+                <span style={{ background: googleColors.green }}></span>
+              </div>
+
+              {/* Bio */}
+              <div className="detail-item chief-bio">
+                {chiefGuest.bio}
+              </div>
 
               {/* Welcome Message */}
-              <div className="welcome-message animate-in">
-                <div className="message-icon">✨</div>
-                <p className="message-text">
-                  Welcome to GVPCEW! We are honored to have you grace our GDGoC Inauguration ceremony.
-                  Your insights and experience will inspire our community of aspiring developers.
-                </p>
+              <div className="detail-item chief-message">
+                <div className="message-box" style={{ borderLeftColor: googleColors.blue }}>
+                  <p className="message-content">
+                    We are honored to have you grace our GDGoC Inauguration ceremony. Your insights will inspire our community!
+                  </p>
+                </div>
               </div>
             </div>
           </div>
-
-          {/* Institution Banner */}
-          <div className="institution-banner animate-in">
-            <p className="institution-text">
-              Gayatri Vidya Parishad College Of Engineering For Women (A)
-            </p>
-          </div>
-        </div>
-
-        {/* Decorative Background */}
-        <div className="bg-decorations">
-          <div className="bg-circle circle-1"></div>
-          <div className="bg-circle circle-2"></div>
-          <div className="bg-circle circle-3"></div>
-          <div className="bg-circle circle-4"></div>
         </div>
       </div>
     </Slide>
