@@ -22,10 +22,10 @@ const ChiefGuestSlide = () => {
 
   // Chief guest data
   const chiefGuest = {
-    name: 'Dr. Chief Guest Name',
-    title: 'Chief Technology Officer',
-    organization: 'Google India',
-    bio: 'A visionary leader in technology and innovation with over 20 years of experience in software engineering and digital transformation.'
+    name: 'Mr. Raghu Pulaparthi', 
+    title: 'IT Consulting Leader', 
+    organization: 'K2 Partnering Solutions', 
+    bio: 'An accomplished IT Consulting Leader with expertise in AI, Automation, and Digital Transformation, combining strategic leadership with humanitarian values to inspire innovation with purpose.'
   };
 
   useEffect(() => {

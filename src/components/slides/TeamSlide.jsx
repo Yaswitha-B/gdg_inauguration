@@ -22,9 +22,9 @@ const TeamSlide = () => {
 
   // Lead member
   const lead = {
-    name: 'Lead Name',
+    name: 'Dharmala Teena Reddy',
     role: 'GDGoC Lead',
-    rollNumber: '21XX1A05XX',
+    rollNumber: '323103210050',
     initials: 'LN',
     color: googleColors.blue,
     isLead: true
@@ -32,14 +32,14 @@ const TeamSlide = () => {
 
   // Core team members
   const coreTeam = [
-    { name: 'Core Member 1', role: 'Technical Lead', rollNumber: '21XX1A05XX', initials: 'CM1', color: googleColors.red },
-    { name: 'Core Member 2', role: 'Design Lead', rollNumber: '21XX1A05XX', initials: 'CM2', color: googleColors.yellow },
-    { name: 'Core Member 3', role: 'Events Lead', rollNumber: '21XX1A05XX', initials: 'CM3', color: googleColors.green },
-    { name: 'Core Member 4', role: 'Marketing Lead', rollNumber: '21XX1A05XX', initials: 'CM4', color: googleColors.blue },
-    { name: 'Core Member 5', role: 'Community Lead', rollNumber: '21XX1A05XX', initials: 'CM5', color: googleColors.red },
-    { name: 'Core Member 6', role: 'Content Lead', rollNumber: '21XX1A05XX', initials: 'CM6', color: googleColors.yellow },
-    { name: 'Core Member 7', role: 'Operations Lead', rollNumber: '21XX1A05XX', initials: 'CM7', color: googleColors.green },
-    { name: 'Core Member 8', role: 'Outreach Lead', rollNumber: '21XX1A05XX', initials: 'CM8', color: googleColors.blue }
+    { name: 'Yaswitha Boppana', role: 'Cybersecurity Lead', rollNumber: '323103210032', initials: 'CM1', color: googleColors.red },
+    { name: 'Yasaswini Chebolu', role: 'Machine Learning Lead', rollNumber: '323103282116', initials: 'CM2', color: googleColors.yellow },
+    { name: 'Sita Sowmya', role: 'Cloud Engineer', rollNumber: '323103210058', initials: 'CM3', color: googleColors.green },
+    { name: 'Keerthi Sri Reddy', role: 'Full Stack Developer', rollNumber: '323103210033', initials: 'CM4', color: googleColors.blue },
+    { name: 'Mokshagna Reddy', role: 'Andriod Developer ', rollNumber: '323103282089', initials: 'CM5', color: googleColors.red },
+    { name: 'Kanthija Annamreddi', role: 'Social Media Manager', rollNumber: '323103210015', initials: 'CM6', color: googleColors.yellow },
+    { name: 'Susmitha Eluri', role: 'Content writer', rollNumber: '324103211014', initials: 'CM7', color: googleColors.green },
+    { name: 'Udaya sri kandula', role: 'Event Manager', rollNumber: '323103210100 ', initials: 'CM8', color: googleColors.blue }
   ];
 
   const allMembers = [lead, ...coreTeam];
