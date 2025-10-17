@@ -22,8 +22,8 @@ function App() {
     <div className="slides-container" ref={containerRef}>
       <GDGIntroSlide />
       <GDGAboutSlide />
-      <TeamSlide />
       <ChiefGuestSlide />
+       <TeamSlide />
     </div>
   );
 }
