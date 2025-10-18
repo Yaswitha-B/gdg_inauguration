@@ -23,7 +23,7 @@ const GDGAboutSlide = () => {
   const cards = [
     {
       id: 1,
-      title: 'About GDG',
+      title: 'About GDGoC',
       icon: '🌐',
       description: 'Google Developer Groups on Campus is a community of students passionate about Google technologies and development.',
       detail: 'We organize workshops, hackathons, and tech talks to empower students with cutting-edge skills and industry connections.',

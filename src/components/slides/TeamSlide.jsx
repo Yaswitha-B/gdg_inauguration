@@ -33,12 +33,12 @@ const TeamSlide = () => {
   // Core team members
   const coreTeam = [
     { name: 'Yaswitha Boppana', role: 'Cybersecurity Lead', rollNumber: '323103210032', initials: 'CM1', color: googleColors.red },
-    { name: 'Yasaswini Chebolu', role: 'Machine Learning Lead', rollNumber: '323103282116', initials: 'CM2', color: googleColors.yellow },
     { name: 'Sita Sowmya', role: 'Cloud Engineer', rollNumber: '323103210058', initials: 'CM3', color: googleColors.green },
+    { name: 'Yasaswini Chebolu', role: 'Machine Learning Lead', rollNumber: '323103282116', initials: 'CM2', color: googleColors.yellow },
     { name: 'Keerthi Sri Reddy', role: 'Full Stack Developer', rollNumber: '323103210033', initials: 'CM4', color: googleColors.blue },
     { name: 'Mokshagna Reddy', role: 'Andriod Developer ', rollNumber: '323103282089', initials: 'CM5', color: googleColors.red },
-    { name: 'Kanthija Annamreddi', role: 'Social Media Manager', rollNumber: '323103210015', initials: 'CM6', color: googleColors.yellow },
-    { name: 'Susmitha Eluri', role: 'Content writer', rollNumber: '324103211014', initials: 'CM7', color: googleColors.green },
+    { name: 'Kanthija Annamreddi', role: 'Social Media Manager', rollNumber: '323103210015', initials: 'CM6', color: googleColors.green },
+    { name: 'Susmitha Eluri', role: 'Content writer', rollNumber: '324103211014', initials: 'CM7', color: googleColors.yellow },
     { name: 'Udaya sri kandula', role: 'Event Manager', rollNumber: '323103210100 ', initials: 'CM8', color: googleColors.blue }
   ];
 

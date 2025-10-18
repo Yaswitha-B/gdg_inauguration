@@ -24,9 +24,9 @@ const ChiefGuestSlide = () => {
   // Chief guest data
   const chiefGuest = {
     name: 'Mr. Raghu Pulaparthi', 
-    title: 'IT Consulting Leader', 
+    title: 'Senior Director', 
     organization: 'K2 Partnering Solutions', 
-    bio: 'An accomplished IT Consulting Leader with expertise in AI, Automation, and Digital Transformation, combining strategic leadership with humanitarian values to inspire innovation with purpose.'
+    bio: 'Mr. Raghu Pulaparthi is Senior Director at K2 Partnering Solutions, President of the GVPCE Alumni Association, and a member of ASQ, specializing in AI, Data Integration, and Data Engineering.'
   };
 
   useEffect(() => {
