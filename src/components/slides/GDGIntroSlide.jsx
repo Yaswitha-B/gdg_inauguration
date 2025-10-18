@@ -15,7 +15,9 @@ import './GDGIntroSlide.css';
  */
 const GDGIntroSlide = () => {
   const [activeCard, setActiveCard] = useState(0);
+  const [isVisible, setIsVisible] = useState(false);
   const decorationsRef = useRef(null);
+  const slideRef = useRef(null);
 
   // Google brand colors
   const googleColors = {
@@ -26,7 +28,33 @@ const GDGIntroSlide = () => {
   };
 
   useEffect(() => {
-    // Start floating decorations
+    // Intersection Observer to detect when slide is visible
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && !isVisible) {
+            setIsVisible(true);
+          }
+        });
+      },
+      { threshold: 0.5 } // Trigger when 50% of slide is visible
+    );
+
+    if (slideRef.current) {
+      observer.observe(slideRef.current);
+    }
+
+    return () => {
+      if (slideRef.current) {
+        observer.unobserve(slideRef.current);
+      }
+    };
+  }, [isVisible]);
+
+  useEffect(() => {
+    if (!isVisible) return;
+
+    // Start floating decorations only when visible
     const timeline = setTimeout(() => {
       if (decorationsRef.current) {
         const dots = decorationsRef.current.querySelectorAll('.floating-dot');
@@ -34,7 +62,7 @@ const GDGIntroSlide = () => {
       }
     }, 300);
 
-    // Auto-rotate carousel every 8 seconds
+    // Auto-rotate carousel every 8 seconds only when visible
     const autoRotate = setInterval(() => {
       setActiveCard(prev => (prev === 0 ? 1 : 0));
     }, 8000);
@@ -43,7 +71,7 @@ const GDGIntroSlide = () => {
       clearTimeout(timeline);
       clearInterval(autoRotate);
     };
-  }, []);
+  }, [isVisible]);
 
   // Card 1 - College Info (Logo Card style)
   const renderCollegeCard = () => {
@@ -201,7 +229,7 @@ const GDGIntroSlide = () => {
 
   return (
     <Slide id="gdg-intro" backgroundColor="#000000">
-      <div className="gdg-intro-root">
+      <div className={`gdg-intro-root ${isVisible ? 'slide-visible' : ''}`} ref={slideRef}>
         {/* Subtle decorative dots - minimal and clean */}
         <div className="decorations" ref={decorationsRef}>
           <div className="floating-dot dot-blue"></div>

@@ -327,6 +327,11 @@
   height: 100%;
   object-fit: contain;
   filter: drop-shadow(0 0 20px rgba(66, 133, 244, 0.5));
+  animation: none; /* No animation by default */
+}
+
+/* Start logo rotation only when slide is visible */
+.slide-visible .gdg-logo-pulsing {
   animation: logoRotateUntilTyping 8s ease-out forwards;
 }
 
@@ -387,10 +392,15 @@
 .letter-animated {
   display: inline-block;
   opacity: 0;
-  animation: typeIn 0.3s ease-out forwards;
+  animation: none; /* No animation by default */
   white-space: pre;
   -webkit-text-stroke: 1px rgba(0, 0, 0, 0.6);
   paint-order: stroke fill;
+}
+
+/* Start typing animation only when slide is visible */
+.slide-visible .letter-animated {
+  animation: typeIn 0.3s ease-out forwards;
 }
 
 @keyframes typeIn {
