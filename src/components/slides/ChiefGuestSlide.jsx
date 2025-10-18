@@ -2,7 +2,7 @@ import { useEffect, useRef } from 'react';
 import { animate } from 'animejs';
 import Slide from '../Slide';
 import './ChiefGuestSlide.css';
-import chiefGuestImage from '../../assets/logos/Chief2.jpg';
+import chiefGuestImage from '../../assets/logos/Chief.jpg';
 
 /**
  * Chief Guest Slide - Split Layout
